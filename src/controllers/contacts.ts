@@ -62,9 +62,17 @@ const updateContact = async (
     next(error)
   }
 }
-const deleteContact = async (_: Request, res: Response, next: NextFunction) => {
+
+const deleteContact = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
-    res.status(200).json({ test: 'deleteContact' })
+    const contact = await getContactWithValidations(req, res)
+    await Contact.findByIdAndRemove(req.params.id)
+
+    res.status(200).json(contact)
   } catch (error: any) {
     next(error)
   }

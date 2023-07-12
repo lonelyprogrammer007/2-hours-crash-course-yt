@@ -18,6 +18,8 @@ const getContactWithValidations = async (req: Request, res: Response) => {
   if (!contact) {
     res.status(404)
     throw new Error('Contact not found')
+  } else {
+    return contact
   }
 }
 
