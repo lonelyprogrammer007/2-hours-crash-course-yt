@@ -9,6 +9,11 @@ const validateBodyFields = (
   const bodyKeys = Object.keys(req.body);
   const modelFields = Object.keys(model.schema.paths);
 
+  if (bodyKeys.includes("_id")) {
+    res.status(400);
+    throw new Error("Cannot update the '_id' field");
+  }
+
   // Remove MongoDB's default _id and __v fields
   const indexId = modelFields.indexOf("_id");
   if (indexId > -1) modelFields.splice(indexId, 1);
