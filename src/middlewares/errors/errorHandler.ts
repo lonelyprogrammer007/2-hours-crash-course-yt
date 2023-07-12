@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from "express";
-import { HTTP } from "../../constants";
+import { Request, Response, NextFunction } from 'express'
+import { HTTP } from '../../constants'
 
-const HTTPStatuses: Record<string, number> = HTTP;
+const HTTPStatuses: Record<string, number> = HTTP
 
 const errorHandler = (
   err: Error,
@@ -10,24 +10,24 @@ const errorHandler = (
   next: NextFunction
 ) => {
   if (res.headersSent) {
-    return next(err);
+    return next(err)
   }
 
-  const statusCode = res.statusCode || 500;
+  const statusCode = res.statusCode || 500
 
-  let errorName: string = "Unknown Error";
-  for (let key in HTTPStatuses) {
+  let errorName = 'Unknown Error'
+  for (const key in HTTPStatuses) {
     if (HTTPStatuses[key] === statusCode) {
-      errorName = key;
-      break;
+      errorName = key
+      break
     }
   }
 
   res.status(statusCode).json({
-    errorName: errorName,
+    errorName,
     message: err.message,
-    ...(process.env.NODE_ENV === "development" && { stackTrace: err.stack }),
-  });
-};
+    ...(process.env.NODE_ENV === 'development' && { stackTrace: err.stack }),
+  })
+}
 
-export { errorHandler };
+export { errorHandler }

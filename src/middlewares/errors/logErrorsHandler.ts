@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express'
 
 const logErrorsHandler = (
   err: Error,
@@ -6,8 +6,8 @@ const logErrorsHandler = (
   __: Response,
   next: NextFunction
 ) => {
-  console.log(err.stack);
-  next(err);
-};
+  console.log(err.stack)
+  next(err)
+}
 
-export { logErrorsHandler };
+export { logErrorsHandler }
