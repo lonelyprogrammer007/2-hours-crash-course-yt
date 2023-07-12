@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
-import { Contact } from "../models/mongoose/contact";
+import { Contact } from "../../models/mongoose/contact";
 
 const getContactWithValidations = async (req: Request, res: Response) => {
   const id = req.params.id;

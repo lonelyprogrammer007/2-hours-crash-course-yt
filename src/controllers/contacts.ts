@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { Contact } from "../models/mongoose/contact";
-import { getContactWithValidations } from "../utils";
+import { getContactWithValidations } from "../utils/models";
 import { validateBodyFields } from "../utils/mongoose/validators";
 
 //TODO: assign correct type to the errors in the catch block
