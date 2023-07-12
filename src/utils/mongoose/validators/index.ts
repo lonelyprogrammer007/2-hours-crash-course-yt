@@ -15,11 +15,19 @@ const validateBodyFields = (
   const indexV = modelFields.indexOf("__v");
   if (indexV > -1) modelFields.splice(indexV, 1);
 
+  let validFieldFound = false;
   for (let key of bodyKeys) {
     if (!modelFields.includes(key)) {
       res.status(400);
       throw new Error(`Invalid field: ${key}`);
+    } else {
+      validFieldFound = true;
     }
+  }
+
+  if (!validFieldFound) {
+    res.status(400);
+    throw new Error("No valid fields provided");
   }
 };
 
