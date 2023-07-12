@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { Contact } from "../models/mongoose/contact";
 import { getContactWithValidations } from "../utils";
+import { validateBodyFields } from "../utils/mongoose/validators";
 
 //TODO: assign correct type to the errors in the catch block
 
@@ -48,6 +49,7 @@ const updateContact = async (
 ) => {
   try {
     await getContactWithValidations(req, res);
+    validateBodyFields(req, res, Contact);
 
     const updatedContact = await Contact.findByIdAndUpdate(
       req.params.id,
@@ -60,7 +62,6 @@ const updateContact = async (
     next(error);
   }
 };
-
 const deleteContact = async (_: Request, res: Response, next: NextFunction) => {
   try {
     res.status(200).json({ test: "deleteContact" });
