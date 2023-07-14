@@ -1,7 +1,6 @@
 import CryptoJS from 'crypto-js'
-import { randomBytes } from 'crypto'
 
-const secretKey = randomBytes(32).toString()
+const secretKey = process.env.ACCESS_TOKEN_SECRET
 
 const encryptValue = (dataEncrypt: string): string => {
   return CryptoJS.AES.encrypt(JSON.stringify(dataEncrypt), secretKey).toString()

@@ -5,7 +5,7 @@ import { validateBodyFieldsAfterCreation } from '../utils/mongoose/validators'
 
 // TODO: assign correct type to the errors in the catch block
 
-const getContacts: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (_: Request, res: Response, next: NextFunction) => {
+const getContacts: (_: Request, __: Response, ___: NextFunction) => Promise<void> = async (_: Request, res: Response, next: NextFunction) => {
   try {
     const contacts = await Contact.find()
     res.status(200).json(contacts)
@@ -14,7 +14,7 @@ const getContacts: (_: Request, res: Response, next: NextFunction) => Promise<vo
   }
 }
 
-const createContact: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (
+const createContact: (_: Request, __: Response, ___: NextFunction) => Promise<void> = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -36,7 +36,7 @@ const createContact: (_: Request, res: Response, next: NextFunction) => Promise<
   }
 }
 
-const getContact: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (req: Request, res: Response, next: NextFunction) => {
+const getContact: (_: Request, __: Response, ___: NextFunction) => Promise<void> = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const contact = await getContactWithValidations(req, res)
     res.status(200).json(contact)
@@ -45,7 +45,7 @@ const getContact: (_: Request, res: Response, next: NextFunction) => Promise<voi
   }
 }
 
-const updateContact: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (
+const updateContact: (_: Request, __: Response, ___: NextFunction) => Promise<void> = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -66,7 +66,7 @@ const updateContact: (_: Request, res: Response, next: NextFunction) => Promise<
   }
 }
 
-const deleteContact: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (
+const deleteContact: (_: Request, __: Response, ___: NextFunction) => Promise<void> = async (
   req: Request,
   res: Response,
   next: NextFunction
