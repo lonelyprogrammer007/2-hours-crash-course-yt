@@ -5,7 +5,7 @@ import { connectDb } from './config/dbConnection'
 import { errorHandler } from './middlewares/errors/errorHandler'
 import { logErrorsHandler } from './middlewares/errors/logErrorsHandler'
 import { contactsRouter } from './routes/contacts'
-// import { usersRouter } from './routes/users'
+import { usersRouter } from './routes/users'
 
 dotenv.config()
 const app: Express = express()
@@ -14,7 +14,7 @@ const port: string | number = process.env.PORT ?? 5000
 app.use(express.json())
 
 app.use('/api/contacts', contactsRouter)
-app.use('/api/users', contactsRouter)
+app.use('/api/users', usersRouter)
 
 app.use(logErrorsHandler)
 app.use(errorHandler)

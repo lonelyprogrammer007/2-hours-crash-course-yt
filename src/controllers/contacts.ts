@@ -1,7 +1,7 @@
 import { type NextFunction, type Request, type Response } from 'express'
-import { Contact } from '../models/mongoose/contact'
+import { Contact } from '../models/mongoose-repository/contact'
 import { getContactWithValidations } from '../utils/models'
-import { validateBodyFields } from '../utils/mongoose/validators'
+import { validateBodyFieldsAfterCreation } from '../utils/mongoose/validators'
 
 // TODO: assign correct type to the errors in the catch block
 
@@ -52,7 +52,7 @@ const updateContact: (_: Request, res: Response, next: NextFunction) => Promise<
 ) => {
   try {
     await getContactWithValidations(req, res)
-    validateBodyFields(req, res, Contact)
+    validateBodyFieldsAfterCreation(req, res, Contact)
 
     const updatedContact = await Contact.findByIdAndUpdate(
       req.params.id,

@@ -2,7 +2,7 @@
 import { type Request, type Response } from 'express'
 import type mongoose from 'mongoose'
 
-const validateBodyFields: (req: Request,
+const validateBodyFieldsAfterCreation: (req: Request,
   res: Response,
   model: mongoose.Model<any>) => void = (
   req: Request,
@@ -39,4 +39,4 @@ const validateBodyFields: (req: Request,
   }
 }
 
-export { validateBodyFields }
+export { validateBodyFieldsAfterCreation }
