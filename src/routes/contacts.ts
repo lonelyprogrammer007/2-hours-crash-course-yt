@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import express from 'express'
 import {
   createContact,
   deleteContact,
   getContact,
   getContacts,
-  updateContact,
+  updateContact
 } from '../controllers/contacts'
 
 const router = express.Router()

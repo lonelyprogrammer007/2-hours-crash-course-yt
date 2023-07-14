@@ -1,6 +1,9 @@
-import { Request, Response, NextFunction } from 'express'
+import { type Request, type Response, type NextFunction } from 'express'
 
-const logErrorsHandler = (
+const logErrorsHandler: (err: Error,
+  _: Request,
+  __: Response,
+  next: NextFunction) => void = (
   err: Error,
   _: Request,
   __: Response,

@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Request, Response } from 'express'
-import mongoose from 'mongoose'
+import { type Request, type Response } from 'express'
+import type mongoose from 'mongoose'
 
-const validateBodyFields = (
+const validateBodyFields: (req: Request,
+  res: Response,
+  model: mongoose.Model<any>) => void = (
   req: Request,
   res: Response,
   model: mongoose.Model<any>

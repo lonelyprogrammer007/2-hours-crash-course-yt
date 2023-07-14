@@ -1,11 +1,11 @@
-import { NextFunction, Request, Response } from 'express'
+import { type NextFunction, type Request, type Response } from 'express'
 import { Contact } from '../models/mongoose/contact'
 import { getContactWithValidations } from '../utils/models'
 import { validateBodyFields } from '../utils/mongoose/validators'
 
 // TODO: assign correct type to the errors in the catch block
 
-const getContacts = async (_: Request, res: Response, next: NextFunction) => {
+const getContacts: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (_: Request, res: Response, next: NextFunction) => {
   try {
     const contacts = await Contact.find()
     res.status(200).json(contacts)
@@ -14,15 +14,18 @@ const getContacts = async (_: Request, res: Response, next: NextFunction) => {
   }
 }
 
-const createContact = async (
+const createContact: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const { name, email, phone } = req.body
+    let { name, email, phone } = req.body
+    name = name ?? ''
+    email = email ?? ''
+    phone = phone ?? ''
 
-    if (!name || !email || !phone) {
+    if (name === '' || email === '' || phone === '') {
       res.status(400)
       throw new Error('All fields are mandatory')
     }
@@ -33,7 +36,7 @@ const createContact = async (
   }
 }
 
-const getContact = async (req: Request, res: Response, next: NextFunction) => {
+const getContact: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const contact = await getContactWithValidations(req, res)
     res.status(200).json(contact)
@@ -42,7 +45,7 @@ const getContact = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
-const updateContact = async (
+const updateContact: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -63,7 +66,7 @@ const updateContact = async (
   }
 }
 
-const deleteContact = async (
+const deleteContact: (_: Request, res: Response, next: NextFunction) => Promise<void> = async (
   req: Request,
   res: Response,
   next: NextFunction

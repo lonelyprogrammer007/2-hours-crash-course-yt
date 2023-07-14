@@ -1,10 +1,10 @@
-import { Request, Response } from 'express'
+import { type Request, type Response } from 'express'
 import mongoose from 'mongoose'
 import { Contact } from '../../models/mongoose/contact'
 
-const getContactWithValidations = async (req: Request, res: Response) => {
-  const id = req.params.id
-  if (!id) {
+const getContactWithValidations: (req: Request, res: Response) => Promise<unknown> = async (req: Request, res: Response) => {
+  const id = req.params.id ?? ''
+  if (id === '') {
     res.status(400)
     throw new Error('missed URL param')
   }
@@ -15,7 +15,7 @@ const getContactWithValidations = async (req: Request, res: Response) => {
   }
 
   const contact = await Contact.findById(id)
-  if (!contact) {
+  if (contact == null) {
     res.status(404)
     throw new Error('Contact not found')
   } else {
