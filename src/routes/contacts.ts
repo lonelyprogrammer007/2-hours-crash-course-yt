@@ -8,8 +8,11 @@ import {
   getContacts,
   updateContact
 } from '../controllers/contacts'
+import { validateToken } from '../middlewares/jwt/validateTokenHandler'
 
 const router = express.Router()
+
+router.use(validateToken)
 
 router.route('/').get(getContacts).post(createContact)
 

@@ -52,17 +52,17 @@ const loginUser: (_: Request, __: Response, ___: NextFunction) => Promise<void> 
     let { email, password } = req.body
     email = email ?? ''
     password = password ?? ''
-    if (email === '' || password === '') throw Error('All fields are mandatory')
+    if (email === '' || password === '') {
+      throw Error('All fields are mandatory')
+    }
 
     const user = await User.findOne({ email })
     if (user == null) {
-      res.status(404)
       throw Error('User not found')
     }
 
     const decryptedPassword = decodeValue(user.password!)
     if (password !== decryptedPassword) {
-      res.status(401)
       throw Error('Incorrect password')
     }
 
@@ -76,6 +76,7 @@ const loginUser: (_: Request, __: Response, ___: NextFunction) => Promise<void> 
       token: accessToken
     })
   } catch (error: any) {
+    res.status(401)
     next(error)
   }
 }

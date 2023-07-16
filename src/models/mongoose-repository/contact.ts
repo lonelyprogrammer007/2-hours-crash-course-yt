@@ -4,6 +4,11 @@ const Contact = mongoose.model(
   'Contact',
   new mongoose.Schema(
     {
+      user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, 'user missing'],
+        ref: 'User'
+      },
       name: {
         type: String,
         required: [true, 'Please add the contact name']

@@ -10,7 +10,12 @@ const validateToken = (req: Request, res: Response, next: NextFunction): void =>
     return
   }
 
-  const token = authorizationHeader.split('Bearer ')[1]
+  let token = authorizationHeader.split('Bearer ')[1]
+  token = token ?? ''
+  if (token === '') {
+    res.status(401)
+    throw new Error('token is missing')
+  }
   try {
     const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET!)
     if (typeof decodedToken !== 'string') {
