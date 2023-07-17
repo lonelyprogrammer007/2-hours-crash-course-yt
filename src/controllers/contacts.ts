@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { type NextFunction, type Request, type Response } from 'express'
-import { Contact } from '../models/mongoose-repository/contact'
+import { type RequestWithUser } from '../models/api/requestWithUser'
+import { Contact as ContactRepo } from '../models/mongoose-repository/contact'
+import { validateContactPermission } from '../utils/jwt'
 import { getContactWithValidations } from '../utils/models'
 import { validateBodyFieldsAfterCreation } from '../utils/mongoose/validators'
-import { type RequestWithUser } from '../models/api/requestWithUser'
 
 // TODO: assign correct type to the errors in the catch block
 
 const getContacts: (_: Request, __: Response, ___: NextFunction) => Promise<void> = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userId = (req as RequestWithUser).user!.id
-    const contacts = await Contact.find({ user_id: userId })
+    const contacts = await ContactRepo.find({ user_id: userId })
     res.status(200).json(contacts)
   } catch (error: any) {
     next(error)
@@ -33,7 +34,7 @@ const createContact: (_: Request, __: Response, ___: NextFunction) => Promise<vo
       throw new Error('All fields are mandatory')
     }
     const userId = (req as RequestWithUser).user!.id
-    const contact = await Contact.create({ name, email, phone, user_id: userId })
+    const contact = await ContactRepo.create({ name, email, phone, user_id: userId })
     res.status(201).json(contact)
   } catch (error: any) {
     next(error)
@@ -55,10 +56,12 @@ const updateContact: (_: Request, __: Response, ___: NextFunction) => Promise<vo
   next: NextFunction
 ) => {
   try {
-    await getContactWithValidations(req, res)
-    validateBodyFieldsAfterCreation(req, res, Contact)
+    const contact = await getContactWithValidations(req, res)
+    validateBodyFieldsAfterCreation(req, res, ContactRepo)
 
-    const updatedContact = await Contact.findByIdAndUpdate(
+    validateContactPermission(contact, req, res)
+
+    const updatedContact = await ContactRepo.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true }
@@ -77,7 +80,10 @@ const deleteContact: (_: Request, __: Response, ___: NextFunction) => Promise<vo
 ) => {
   try {
     const contact = await getContactWithValidations(req, res)
-    await Contact.findByIdAndRemove(req.params.id)
+
+    validateContactPermission(contact, req, res)
+
+    await ContactRepo.deleteOne({ _id: req.params.id })
 
     res.status(200).json(contact)
   } catch (error: any) {
