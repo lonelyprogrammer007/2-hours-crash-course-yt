@@ -6,8 +6,6 @@ import { validateContactPermission } from '../utils/jwt'
 import { getContactWithValidations } from '../utils/models'
 import { validateBodyFieldsAfterCreation } from '../utils/mongoose/validators'
 
-// TODO: assign correct type to the errors in the catch block
-
 const getContacts: (_: Request, __: Response, ___: NextFunction) => Promise<void> = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userId = (req as RequestWithUser).user!.id

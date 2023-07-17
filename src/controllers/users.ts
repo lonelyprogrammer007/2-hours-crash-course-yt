@@ -7,8 +7,6 @@ import { validateEmail } from '../utils/regex'
 import jwt from 'jsonwebtoken'
 import { type RequestWithUser } from '../models/api/requestWithUser'
 
-// TODO: assign correct type to the errors in the catch block
-
 const registerUser: (_: Request, __: Response, ___: NextFunction) => Promise<void> = async (req: Request, res: Response, next: NextFunction) => {
   try {
     validateBodyFieldsAfterCreation(req, res, User)
