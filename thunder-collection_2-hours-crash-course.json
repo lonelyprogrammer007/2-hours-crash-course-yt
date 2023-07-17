@@ -1,0 +1,186 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "2-hours-crash-course",
+    "dateExported": "2023-07-17T00:33:41.216Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "3a05563c-1955-472e-9249-812b5c2040aa",
+            "name": "contacts",
+            "containerId": "",
+            "created": "2023-07-12T21:45:17.293Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "a84f59bf-a904-4c89-b8e9-17493d8695e7",
+            "name": "users",
+            "containerId": "",
+            "created": "2023-07-14T15:03:57.438Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "3409e488-244f-478f-a0b8-a58540c7cd26",
+            "colId": "8dc304b8-01c8-4718-93ce-3618b23a5f0f",
+            "containerId": "3a05563c-1955-472e-9249-812b5c2040aa",
+            "name": "get all by user",
+            "url": "{{URL_THUNDER_CLIENT}}/api/contacts",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-07-10T13:54:43.596Z",
+            "modified": "2023-07-17T00:24:18.547Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjFjNDg0YTE5Y2NiZGY0YjEwMWNkNSIsImVtYWlsIjoidGVzdDNAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3QxMjM0NTY3IiwiaWF0IjoxNjg5NTUzNDUxLCJleHAiOjE2ODk1NTcwNTF9.c2VIGYDfREWM5F7Y5AKQ1eYC97cC15pPWt6tN7yIji8"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c199ebf1-5d23-46db-a2e7-117d1a38b203",
+            "colId": "8dc304b8-01c8-4718-93ce-3618b23a5f0f",
+            "containerId": "3a05563c-1955-472e-9249-812b5c2040aa",
+            "name": "get by id",
+            "url": "{{URL_THUNDER_CLIENT}}/api/contacts/64b47a46ba7399e2ca1adff7",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-07-10T13:54:55.972Z",
+            "modified": "2023-07-17T00:05:06.831Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQ3YWM0YmE3Mzk5ZTJjYTFhZGZmZCIsImVtYWlsIjoiY2hlc3Bpcml0b0B0ZXN0LmNvbSIsInVzZXJuYW1lIjoiY2hlc3Bpcml0byIsImlhdCI6MTY4OTU0OTUxOSwiZXhwIjoxNjg5NTUzMTE5fQ.ML6L01TWP-and2Bkwwu1WzVPI3WXCoS03OS04vSCD8o"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0aa56ed8-112a-4705-98d6-13ee341a2acb",
+            "colId": "8dc304b8-01c8-4718-93ce-3618b23a5f0f",
+            "containerId": "3a05563c-1955-472e-9249-812b5c2040aa",
+            "name": "create",
+            "url": "{{URL_THUNDER_CLIENT}}/api/contacts",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-07-10T13:55:18.633Z",
+            "modified": "2023-07-17T00:13:27.052Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQ3YWM0YmE3Mzk5ZTJjYTFhZGZmZCIsImVtYWlsIjoiY2hlc3Bpcml0b0B0ZXN0LmNvbSIsInVzZXJuYW1lIjoiY2hlc3Bpcml0byIsImlhdCI6MTY4OTU1Mjc4MSwiZXhwIjoxNjg5NTU2MzgxfQ.gDbo-83LTtsdqotjrA_I9fWWLRFGEGNBA10s7ooZ-JM"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"camilo 123\",\n  \"email\": \"camilo123@gmail.com\",\n  \"phone\": \"412151\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7d37ec2d-7166-4f3b-942b-c552d5aebf3c",
+            "colId": "8dc304b8-01c8-4718-93ce-3618b23a5f0f",
+            "containerId": "3a05563c-1955-472e-9249-812b5c2040aa",
+            "name": "update by id",
+            "url": "{{URL_THUNDER_CLIENT}}/api/contacts/64b487a6ca6b6100d050ccae",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-07-10T13:55:23.893Z",
+            "modified": "2023-07-17T00:16:33.856Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjFjNDg0YTE5Y2NiZGY0YjEwMWNkNSIsImVtYWlsIjoidGVzdDNAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3QxMjM0NTY3IiwiaWF0IjoxNjg5NTUyOTA5LCJleHAiOjE2ODk1NTY1MDl9.Jdr-H9RTdwT7GfSOuOYBlB8RGjvmk-QcmHpWYYRDuFM"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"NOMBRE\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "16137734-0d58-4083-89b7-87744ec5c7bf",
+            "colId": "8dc304b8-01c8-4718-93ce-3618b23a5f0f",
+            "containerId": "3a05563c-1955-472e-9249-812b5c2040aa",
+            "name": "delete by id",
+            "url": "{{URL_THUNDER_CLIENT}}/api/contacts/64b47a6dba7399e2ca1adff9",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-07-10T13:55:27.333Z",
+            "modified": "2023-07-17T00:31:40.869Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjFjNDg0YTE5Y2NiZGY0YjEwMWNkNSIsImVtYWlsIjoidGVzdDNAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3QxMjM0NTY3IiwiaWF0IjoxNjg5NTUzNDUxLCJleHAiOjE2ODk1NTcwNTF9.c2VIGYDfREWM5F7Y5AKQ1eYC97cC15pPWt6tN7yIji8"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e89bd53b-ad07-42b1-995b-bfb0004b8fa9",
+            "colId": "8dc304b8-01c8-4718-93ce-3618b23a5f0f",
+            "containerId": "a84f59bf-a904-4c89-b8e9-17493d8695e7",
+            "name": "register",
+            "url": "{{URL_THUNDER_CLIENT}}/api/users/register",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-07-14T15:04:07.804Z",
+            "modified": "2023-07-16T23:18:28.780Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"chespirito\",\n  \"email\": \"chespirito@test.com\",\n  \"password\": \"12345678\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "67740093-c3e6-4b73-8636-f186d77e3a86",
+            "colId": "8dc304b8-01c8-4718-93ce-3618b23a5f0f",
+            "containerId": "a84f59bf-a904-4c89-b8e9-17493d8695e7",
+            "name": "login",
+            "url": "{{URL_THUNDER_CLIENT}}/api/users/login",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-07-14T15:04:13.532Z",
+            "modified": "2023-07-17T00:24:11.959Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"test3@test.com\",\n  \"password\": \"12345678\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ab75dee6-3c3f-4a0f-b931-71d53e60f0bf",
+            "colId": "8dc304b8-01c8-4718-93ce-3618b23a5f0f",
+            "containerId": "a84f59bf-a904-4c89-b8e9-17493d8695e7",
+            "name": "get user with token",
+            "url": "{{URL_THUNDER_CLIENT}}/api/users/current",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-07-14T15:04:17.511Z",
+            "modified": "2023-07-16T23:18:51.946Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQ3YWM0YmE3Mzk5ZTJjYTFhZGZmZCIsImVtYWlsIjoiY2hlc3Bpcml0b0B0ZXN0LmNvbSIsInVzZXJuYW1lIjoiY2hlc3Bpcml0byIsImlhdCI6MTY4OTU0OTUxOSwiZXhwIjoxNjg5NTUzMTE5fQ.ML6L01TWP-and2Bkwwu1WzVPI3WXCoS03OS04vSCD8o"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
